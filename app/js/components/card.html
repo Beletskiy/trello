@@ -1,0 +1,27 @@
+<li class="card">
+    <div data-as-sortable-item-handle>
+        <div ng-if='!$ctrl.isEditing'>
+            {{$ctrl.card.description}}
+            <div ng-click='$ctrl.editCard($ctrl.card)'
+                 class='edit-small edit-card hand'>
+            </div>
+            <div ng-click='$ctrl.deleteCard($ctrl.card)'
+                 class='remove-small remove-card hand'>
+            </div>
+        </div>
+
+        <div ng-if='$ctrl.isEditing'>
+            <form ng-submit='$ctrl.updateCard()'>
+                <input type='text'
+                       close-editing
+                       is-editing='$ctrl.isEditing'
+                       ng-model='$ctrl.editingCard.description'>
+                <select class='select-list'
+                        ng-model='$ctrl.editingCard.list_id'
+                        ng-change="$ctrl.updateCard()"
+                        ng-options="list.id as list.listName for list in $ctrl.lists">
+                </select>
+            </form>
+        </div>
+    </div>
+</li>
