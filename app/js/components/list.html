@@ -5,7 +5,8 @@
     <h6>{{$ctrl.arrOfCards | json}}</h6>
 
     <trello-card ng-repeat="card in $ctrl.getCards() | orderBy:'sortIndex'" card="card"
-                 data-as-sortable-item></trello-card>
+                 data-as-sortable-item>
+    </trello-card>
 
     <a ng-click="$ctrl.removeList()" class="hand">
         <div class="remove remove-list"></div>
