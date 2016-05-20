@@ -36,7 +36,8 @@ angular.module('app').factory('cardFactory', function () {
     };
 
     service.deleteCard = function (card) {
-        return _.pull(cards, card);
+        _.pull(cards, card);
+        changeSortIndicesAfterRemovingCard(card);
     };
 
     service.updateCard = function (updatingCard) {
@@ -64,7 +65,6 @@ angular.module('app').factory('cardFactory', function () {
         }
     };
     service.changeSortIndicesBetweenLists = function (source, destination) {
-        // console.log(source.sortableScope.modelValue);//array which remains
         source.itemScope.modelValue.list_id = destination.sortableScope.$parent.$ctrl.list.id;
         destination.sortableScope.modelValue[destination.index].sortIndex = destination.index;
         if (source.index < source.sortableScope.modelValue.length) {
@@ -81,6 +81,17 @@ angular.module('app').factory('cardFactory', function () {
 
     var getSortIndex = function (list) {
         return service.getCards(list).length;
+    };
+
+    var changeSortIndicesAfterRemovingCard = function (card) {
+
+        var removedIndex = card.sortIndex;
+        var cardsFromCurrentList = _.filter(cards, {list_id: card.list_id});
+        if (removedIndex < cardsFromCurrentList.length) {
+            for (var i = removedIndex; i < cardsFromCurrentList.length; i++) {
+                cardsFromCurrentList[i].sortIndex--;
+            }
+        }
     };
 
     return service;

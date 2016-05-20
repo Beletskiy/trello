@@ -4,7 +4,7 @@
     <h1 ng-bind="$ctrl.list.listName"></h1>
     <h6>{{$ctrl.arrOfCards | json}}</h6>
 
-    <trello-card ng-repeat="card in $ctrl.getCards() | orderBy:'sortIndex'" card="card"
+    <trello-card ng-repeat="card in $ctrl.getCards() | orderBy:'sortIndex'" card="card" on-delete="$ctrl.deleteCard(card)"
                  data-as-sortable-item>
     </trello-card>
 

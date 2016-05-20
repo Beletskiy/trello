@@ -10,6 +10,11 @@ function ListController(listFactory, cardFactory) {
         return cardFactory.getCards(this.list);
     };
 
+    this.deleteCard = function (card) {
+        cardFactory.deleteCard(card);
+        this.arrOfCards = cardFactory.getCards(this.list);  //how to get rid this duplication ???
+    };
+
     this.createCard = function () {
         cardFactory.createCard(this.list, this.cardDescription);
         this.arrOfCards = cardFactory.getCards(this.list);   //how to get rid this duplication ???
@@ -31,7 +36,7 @@ function ListController(listFactory, cardFactory) {
         containment: '#lists-container'
     }
 }
-ListController.$inject = ['listFactory', 'cardFactory', '$rootScope'];
+ListController.$inject = ['listFactory', 'cardFactory'];
 angular.module('app').component('trelloList', {
     templateUrl: 'js/components/list.html',
     controller: ListController,

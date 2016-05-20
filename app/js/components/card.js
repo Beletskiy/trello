@@ -5,9 +5,9 @@ function CardController(cardFactory, listFactory) {
 
     this.lists = listFactory.getLists();
 
-    this.deleteCard = function () {
-        cardFactory.deleteCard(this.card);
-    };
+    // this.deleteCard = function () {
+    //     cardFactory.deleteCard(this.card);
+    // };
 
     this.editCard = function () {
         this.isEditing = true;
@@ -25,6 +25,7 @@ angular.module('app').component('trelloCard', {
     templateUrl: 'js/components/card.html',
     controller: CardController,
     bindings: {
-        card: '<'
+        card: '<',
+        onDelete: '&'
     }
 });
