@@ -12,6 +12,6 @@
     "angular-resource": "1.5.x",
     "lodash": "4.11.X",
     "angular-sortable-view": "0.0.15",
-    "ng-sortable": "^1.3.6"
+    "ng-sortable": "1.3.6"
   }
 }
