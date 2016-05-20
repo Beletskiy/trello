@@ -2,10 +2,10 @@
     <div data-as-sortable-item-handle>
         <div ng-if='!$ctrl.isEditing'>
             {{$ctrl.card.description}}
-            <div ng-click='$ctrl.editCard($ctrl.card)'
+            <div ng-click='$ctrl.editCard()'
                  class='edit-small edit-card hand'>
             </div>
-            <div ng-click='$ctrl.deleteCard($ctrl.card)'
+            <div ng-click='$ctrl.deleteCard()'
                  class='remove-small remove-card hand'>
             </div>
         </div>

@@ -5,13 +5,13 @@ function CardController(cardFactory, listFactory) {
 
     this.lists = listFactory.getLists();
 
-    this.deleteCard = function (card) {
-        cardFactory.deleteCard(card);
+    this.deleteCard = function () {
+        cardFactory.deleteCard(this.card);
     };
 
-    this.editCard = function (card) {
+    this.editCard = function () {
         this.isEditing = true;
-        this.editingCard = angular.copy(card);
+        this.editingCard = angular.copy(this.card);
     };
 
     this.updateCard = function () {
