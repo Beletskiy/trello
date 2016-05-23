@@ -208,7 +208,6 @@
          * @param {Object} [scrollableContainer] (optional) Scrollable container object
          */
         movePosition: function (event, element, pos, container, containerPositioning, scrollableContainer) {
-
           var bounds;
           var useRelative = (containerPositioning === 'relative');
 
@@ -245,7 +244,6 @@
             'left': element.x + 'px',
             'top': element.y + 'px'
           });
-          //console.log(element.y);
 
           this.calculatePosition(pos, event);
         },
@@ -261,6 +259,7 @@
                  *         moveTo: moveTo, isSameParent: isSameParent, isOrderChanged: isOrderChanged, eventArgs: eventArgs, apply: apply}}
          */
         dragItem: function (item) {
+
           return {
             index: item.itemScope.$index,
               //index: item.index(),

@@ -40,9 +40,15 @@ angular.module('app').factory('cardFactory', function () {
         changeSortIndicesAfterRemovingCard(card);
     };
 
-    service.updateCard = function (updatingCard) {
+    service.updateCard = function (updatingCard, list) {
         var card = _.find(cards, {id: updatingCard.id});
         card.description = updatingCard.description;
+        if (card.list_id !== updatingCard.list_id) {
+            card.sortIndex = getSortIndex(list);
+            console.log(card, 'card');
+            // todo change this.arrOfCards
+            changeSortIndicesAfterRemovingCard(card);
+        }
         card.list_id = updatingCard.list_id;
     };
 
@@ -87,12 +93,12 @@ angular.module('app').factory('cardFactory', function () {
 
         var removedIndex = card.sortIndex;
         var cardsFromCurrentList = _.filter(cards, {list_id: card.list_id});
+        console.log(cardsFromCurrentList, 'cardsFromCurrentList');
         if (removedIndex < cardsFromCurrentList.length) {
             for (var i = removedIndex; i < cardsFromCurrentList.length; i++) {
                 cardsFromCurrentList[i].sortIndex--;
             }
         }
     };
-
     return service;
 });
