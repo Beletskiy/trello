@@ -8,7 +8,7 @@ function ListsController(listFactory) {
     };
 }
 ListsController.$inject = ['listFactory'];
-angular.module('app').component('trelloLists', {
+    app.component('trelloLists', {
     templateUrl: 'js/components/lists.html',
     controller: ListsController
 });

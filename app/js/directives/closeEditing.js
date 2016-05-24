@@ -1,4 +1,4 @@
-angular.module('app').directive('closeEditing', function () {
+  app.directive('closeEditing', function () {
   var KEYS = {
     ESCAPE: 27
   };

@@ -19,7 +19,7 @@ function CardController(cardFactory, listFactory) {
     };
 }
 CardController.$inject = ['cardFactory', 'listFactory'];
-angular.module('app').component('trelloCard', {
+    app.component('trelloCard', {
     templateUrl: 'js/components/card.html',
     controller: CardController,
     bindings: {

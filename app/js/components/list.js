@@ -35,7 +35,7 @@ function ListController(listFactory, cardFactory) {
     }
 }
 ListController.$inject = ['listFactory', 'cardFactory'];
-angular.module('app').component('trelloList', {
+    app.component('trelloList', {
     templateUrl: 'js/components/list.html',
     controller: ListController,
     bindings: {

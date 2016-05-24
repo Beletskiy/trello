@@ -1,4 +1,4 @@
-angular.module('app').factory('cardFactory', function () {
+    app.factory('cardFactory', function () {
     var service = {};
 
     var cards = [
@@ -45,7 +45,7 @@ angular.module('app').factory('cardFactory', function () {
         card.description = updatingCard.description;
         if (card.list_id !== updatingCard.list_id) {
             card.sortIndex = getSortIndex(list);
-            console.log(card, 'card');
+            //console.log(card, 'card');
             // todo change this.arrOfCards
             changeSortIndicesAfterRemovingCard(card);
         }

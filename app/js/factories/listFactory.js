@@ -1,4 +1,4 @@
-angular.module('app').factory('listFactory', function () {
+    app.factory('listFactory', function () {
     var service = {};
 
     var lists = [
