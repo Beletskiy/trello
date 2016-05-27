@@ -40,14 +40,14 @@
         changeSortIndicesAfterRemovingCard(card);
     };
 
-    service.updateCard = function (updatingCard, list) {
+    service.updateCard = function (updatingCard, destinationList) {
         var card = _.find(cards, {id: updatingCard.id});
+
         card.description = updatingCard.description;
         if (card.list_id !== updatingCard.list_id) {
-            card.sortIndex = getSortIndex(list);
-            //console.log(card, 'card');
-            // todo change this.arrOfCards
             changeSortIndicesAfterRemovingCard(card);
+            card.sortIndex = getSortIndex(destinationList);
+            // todo change this.arrOfCards
         }
         card.list_id = updatingCard.list_id;
     };
@@ -90,10 +90,9 @@
     };
 
     var changeSortIndicesAfterRemovingCard = function (card) {
-
         var removedIndex = card.sortIndex;
         var cardsFromCurrentList = _.filter(cards, {list_id: card.list_id});
-        console.log(cardsFromCurrentList, 'cardsFromCurrentList');
+
         if (removedIndex < cardsFromCurrentList.length) {
             for (var i = removedIndex; i < cardsFromCurrentList.length; i++) {
                 cardsFromCurrentList[i].sortIndex--;
