@@ -12,12 +12,6 @@
         <div class="remove remove-list"></div>
     </a>
 
-    <section class='new-card'>
-        <form ng-submit="$ctrl.createCard()">
-            <input type='text'
-                   ng-model='$ctrl.cardDescription'
-                   class='card-input'
-                   placeholder='New card'>
-        </form>
-    </section>
+    <input-add-card on-create="$ctrl.createCard()" card-description="$ctrl.cardDescription"></input-add-card>
+
 </ul>

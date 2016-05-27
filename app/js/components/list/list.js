@@ -22,7 +22,7 @@ function ListController(listFactory, cardFactory, $scope) {
         this.arrOfCards = cardFactory.getCards(this.list);
         this.cardDescription = '';
     };
-    
+
     this.dragControlListeners = {
         accept: function (sourceItemHandleScope, destSortableScope) {
             return true
@@ -41,7 +41,7 @@ function ListController(listFactory, cardFactory, $scope) {
 }
 ListController.$inject = ['listFactory', 'cardFactory', '$scope'];
 app.component('trelloList', {
-    templateUrl: 'js/components/list.html',
+    templateUrl: 'js/components/list/list.html',
     controller: ListController,
     bindings: {
         list: '<'
