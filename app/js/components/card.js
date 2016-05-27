@@ -1,4 +1,4 @@
-function CardController(cardFactory, listFactory) {
+function CardController(cardFactory, listFactory, $scope) {
 
     this.isEditing = false;
     this.editingCard = null;
@@ -11,14 +11,17 @@ function CardController(cardFactory, listFactory) {
     };
 
     this.updateCard = function () {
-        var list = _.filter(this.lists, {id: this.editingCard.list_id})[0];
-        
-        cardFactory.updateCard(this.editingCard, list);
+        var destinationList = _.filter(this.lists, {id: this.editingCard.list_id})[0];
+
+        cardFactory.updateCard(this.editingCard, destinationList);
+        //listFactory.triggerCardUpdate({ listIds: [ this.editingCard.list_id, list.id ] });//todo emit event
+        $scope.$emit('updateCard', destinationList);
+
         this.editingCard = null;
         this.isEditing = false;
     };
 }
-CardController.$inject = ['cardFactory', 'listFactory'];
+CardController.$inject = ['cardFactory', 'listFactory', '$scope'];
     app.component('trelloCard', {
     templateUrl: 'js/components/card.html',
     controller: CardController,
